@@ -8,19 +8,22 @@
 import SwiftUI
 
 struct BlockTipHeightView: View {
-    @State private var data = ""
-    
-    var body: some View {
-        VStack {
-            Text(data)
-                .padding(15.0)
-                .font(.system(size: 80))
-                
+    @EnvironmentObject var settings: Settings
+    @EnvironmentObject var blockTip: BlockTip
 
+    var body: some View {
+        
+        VStack {
+            Text("Current block time:")
+                .font(.system(size: 30))
             
-            Button("Reload height") {
-                self.fetchData()
-            }
+            Text(String(blockTip.height))
+                .font(.system(size: 80))
+                .onAppear(){
+                    Timer.scheduledTimer(withTimeInterval: Double(settings.refreshTimer), repeats: true) {timer in
+                        self.fetchData()
+                    }
+                }
         }
     }
     
@@ -36,15 +39,18 @@ struct BlockTipHeightView: View {
             guard let data = data else { return }
             
             DispatchQueue.main.async {
-                self.data = String(decoding: data, as: UTF8.self)
+                self.blockTip.height = Int(String(decoding: data, as: UTF8.self))!
             }
         }.resume()
     }
 }
 
+class BlockTip: ObservableObject {
+    @Published var height: Int = 0
+}
 
 struct BlockTipHeight_Preview: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        BlockTipHeightView().environmentObject(Settings()).environmentObject(BlockTip())
     }
 }

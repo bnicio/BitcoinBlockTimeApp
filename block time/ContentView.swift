@@ -8,12 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var data = ""
+    @StateObject var settings = Settings()
+    @StateObject var blockTip = BlockTip()
     
     var body: some View {
-        VStack {
+        
+        TabView {
             BlockTipHeightView()
+                .tabItem {
+                    Image(systemName: "deskclock")
+                    Text("Block time")
+            }
+            ProgressThingyView()
+                .tabItem {
+                    Image(systemName: "lightbulb")
+                    Text("More info")
+                }
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("Settings")
+                }
         }
+        .environmentObject(settings)
+        .environmentObject(blockTip)
     }
 }
 
