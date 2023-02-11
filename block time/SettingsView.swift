@@ -59,7 +59,7 @@ struct SettingsView: View {
 }
 
 class Settings: ObservableObject {
-    @Published var refreshTimer = 5
+    @Published var refreshTimer = 4
 }
 
 struct SettingsView_Previews: PreviewProvider {

@@ -12,7 +12,22 @@
 		02484AD529942AA6002AC941 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02484AD429942AA6002AC941 /* Assets.xcassets */; };
 		02484AD829942AA6002AC941 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02484AD729942AA6002AC941 /* Preview Assets.xcassets */; };
 		02484ADF29942AC3002AC941 /* BlockTipHeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02484ADE29942AC3002AC941 /* BlockTipHeightView.swift */; };
+		026FB9C129952B5700D836CD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026FB9C029952B5700D836CD /* SettingsView.swift */; };
+		027C9614299565DF006CAC53 /* ProgressThingyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C9613299565DF006CAC53 /* ProgressThingyView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		027C95C329955C9D006CAC53 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		02484ACD29942AA5002AC941 /* block time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "block time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -21,6 +36,9 @@
 		02484AD429942AA6002AC941 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02484AD729942AA6002AC941 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		02484ADE29942AC3002AC941 /* BlockTipHeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockTipHeightView.swift; sourceTree = "<group>"; };
+		026FB9C029952B5700D836CD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		027C95AE29955C9C006CAC53 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		027C9613299565DF006CAC53 /* ProgressThingyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressThingyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				02484ACF29942AA5002AC941 /* block time */,
+				027C95AB29955C9C006CAC53 /* Frameworks */,
 				02484ACE29942AA5002AC941 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,7 +74,9 @@
 			children = (
 				02484AD029942AA5002AC941 /* block_timeApp.swift */,
 				02484AD229942AA5002AC941 /* ContentView.swift */,
+				026FB9C029952B5700D836CD /* SettingsView.swift */,
 				02484ADE29942AC3002AC941 /* BlockTipHeightView.swift */,
+				027C9613299565DF006CAC53 /* ProgressThingyView.swift */,
 				02484AD429942AA6002AC941 /* Assets.xcassets */,
 				02484AD629942AA6002AC941 /* Preview Content */,
 			);
@@ -70,6 +91,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		027C95AB29955C9C006CAC53 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				027C95AE29955C9C006CAC53 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -80,6 +109,7 @@
 				02484AC929942AA5002AC941 /* Sources */,
 				02484ACA29942AA5002AC941 /* Frameworks */,
 				02484ACB29942AA5002AC941 /* Resources */,
+				027C95C329955C9D006CAC53 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -141,8 +171,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				02484AD329942AA5002AC941 /* ContentView.swift in Sources */,
+				026FB9C129952B5700D836CD /* SettingsView.swift in Sources */,
 				02484ADF29942AC3002AC941 /* BlockTipHeightView.swift in Sources */,
 				02484AD129942AA5002AC941 /* block_timeApp.swift in Sources */,
+				027C9614299565DF006CAC53 /* ProgressThingyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

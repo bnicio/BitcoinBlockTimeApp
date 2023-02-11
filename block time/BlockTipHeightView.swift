@@ -10,20 +10,33 @@ import SwiftUI
 struct BlockTipHeightView: View {
     @EnvironmentObject var settings: Settings
     @EnvironmentObject var blockTip: BlockTip
-
+    
     var body: some View {
         
         VStack {
-            Text("Current block time:")
-                .font(.system(size: 30))
+            VStack {
+                Circle()
+                    .fill(
+                        blockTip.upToDate
+                    )
+                    .offset(x: 180, y: -300)
+                
+            }
+            .frame(height: 10)
             
-            Text(String(blockTip.height))
-                .font(.system(size: 80))
-                .onAppear(){
-                    Timer.scheduledTimer(withTimeInterval: Double(settings.refreshTimer), repeats: true) {timer in
-                        self.fetchData()
+            
+            VStack {
+                Text("Current block time:")
+                    .font(.system(size: 30))
+                
+                Text(String(blockTip.height))
+                    .font(.system(size: 80))
+                    .onAppear(){
+                        Timer.scheduledTimer(withTimeInterval: Double(settings.refreshTimer), repeats: true) {timer in
+                            self.fetchData()
+                        }
                     }
-                }
+            }
         }
     }
     
@@ -33,6 +46,7 @@ struct BlockTipHeightView: View {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
+                blockTip.upToDate = .red
                 return
             }
             
@@ -40,13 +54,18 @@ struct BlockTipHeightView: View {
             
             DispatchQueue.main.async {
                 self.blockTip.height = Int(String(decoding: data, as: UTF8.self))!
+                blockTip.upToDate = .green
+                
             }
         }.resume()
     }
 }
 
+
+
 class BlockTip: ObservableObject {
     @Published var height: Int = 0
+    @Published var upToDate: Color = .red
 }
 
 struct BlockTipHeight_Preview: PreviewProvider {
